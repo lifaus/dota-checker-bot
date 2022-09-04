@@ -12,7 +12,7 @@ We've migrated to a private repository.
 
 ## Installation
 ```
-git clone https://github.com/nouseruk/dota-account-info-bot
+git clone https://github.com/nouseruk/dota-checker-bot
 ```
 
 ## Running
