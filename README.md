@@ -3,7 +3,7 @@
 
 # Dota 2 Account Checker Bot
 
-Telegram bot for receiving information, Dota 2 player by profile ID
+Telegram bot for receiving information, Dota 2 player by profile ID using `OpenDota API`
 
 The main bot instance is here: https://t.me/DotaCheckerBot
 
