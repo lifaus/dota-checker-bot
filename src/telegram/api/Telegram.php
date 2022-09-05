@@ -20,6 +20,31 @@ class Telegram {
         ]);
     }
 
+    public function sendPhoto(string $message, ?Imagick $photo = null, int $chat_id = null) {
+        $bot_url = Telegram::API_URL.$this->telegram_api_key."/";
+        $url = $bot_url . "sendPhoto?chat_id=" . $chat_id ;
+
+        $image_name = rand().".png";
+        $photo->writeImage("./temp/".$image_name);
+
+        $post_fields = [
+            "caption" => $message,
+            'chat_id' => $chat_id,
+            'photo' => new CURLFile("./temp/".$image_name)
+        ];
+
+        $ch = curl_init(); 
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            "Content-Type:multipart/form-data"
+        ]);
+        curl_setopt($ch, CURLOPT_URL, $url); 
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields); 
+        $output = curl_exec($ch);
+
+        return @unlink("./temp/".$image_name);
+    }
+
 }
 
 ?>
